@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/add" method="post" enctype="multipart/form-data">
+    <label>Название книги</label>
+  <input type="text" name="name"/>
+
+    <br>
+    <br>
+    <label>Автор</label>
+    <input type="text" name="author"/>
+
+    <br>
+    <br>
+    <label>Издательство</label>
+    <input type="text" name="publisher">
+
+    <br>
+    <br>
+
+    <label for="language-select">Язык книги:</label>
+
+    <select name="language" id="language-select">
+        <option value="">--Выберите язык--</option>
+        <option value="english">Английский</option>
+        <option value="spanish">Испанский</option>
+        <option value="german">Немецкий</option>
+        <option value="russian">Русский</option>
+        <option value="arabic">Арабский</option>
+        <option value="japanese">Япоский</option>
+    </select>
+
+    <br>
+    <br>
+
+    <label>Добавьте описание книги</label>
+    <textarea name="description" placeholder="Описание книги"></textarea>
+
+    <br>
+    <br>
+
+    <select name="genre" multiple>
+        <option value="fantasy">Фэнтези</option>
+        <option value="detectives">Детективы</option>
+        <option value="horror">Ужасы</option>
+        <option value="adventures">Приключения</option>
+        <option value="fantastic">Фантастика</option>
+        <option value="thriller">Триллер</option>
+        <option value="prose">Проза</option>
+    </select>
+
+    <br>
+    <br>
+
+  <input type="file" name="image">
+
+    <br>
+    <br>
+
+    <input type="submit">
+</form>
+
+</body>
+</html>
