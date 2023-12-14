@@ -3,17 +3,23 @@ package com.example.library.controller;
 import com.example.library.model.Book;
 import com.example.library.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 
 @Controller
 public class AddBookController {
+
+
+    private  String uploadPath="C:/Users/user/OneDrive/Desktop/library/src/main/resources/static/img";
 
     private  final BookRepository bookRepository;
 
@@ -42,7 +48,19 @@ public class AddBookController {
         book.setPublisher(publisher);
         book.setLanguage(language);
         book.setGenres(genres);
-        book.setImageName(image.getOriginalFilename());
+        if (image!=null) {
+            File uploadDir = new File(uploadPath);
+            if (!uploadDir.exists()){
+                uploadDir.mkdir();
+            }
+            String fileName=UUID.randomUUID().toString();
+            fileName = fileName  + image.getOriginalFilename();
+            book.setImageName(fileName);
+            image.transferTo(new File(uploadPath + "/"+fileName));
+
+
+            System.out.println(uploadPath);
+        }
         bookRepository.save(book);
         return "bookAdd";
     }

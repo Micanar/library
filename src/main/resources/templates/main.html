@@ -6,9 +6,18 @@
     <title>Main page</title>
 </head>
 <body>
+<form action="#" method="get">
+    <input type="text" value="Название книги" >
+    <input type="submit" onclick=alert("Скоро")>
+</form>
 
-<h1 th:text="${message}"></h1>
-<h1>Проверочный текст</h1>
-<a href="https://www.turboimagehost.com/p/96006445/AtomicHeart_sample.jpg.html" target="_blank"><img src="https://s8d7.turboimg.net/t/96006445_AtomicHeart_sample.jpg" border="0" alt="Free Image Hosting" /></a>
+    <div class="card"  th:each="book : ${books}">
+        <img th:src="@{'/img/' + ${book.imageName}}" alt="Book Image"/>
+        <p th:text="${book.name}"></p>
+        <p th:text="${book.author}"></p>
+        <p>Рейтинг</p>
+    </div>
+
+
 </body>
 </html>
